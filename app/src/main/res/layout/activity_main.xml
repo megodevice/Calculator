@@ -77,7 +77,7 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/Orange.Button"
                 android:onClick="onOperationClick"
-                android:text="X" />
+                android:text="*" />
 
         </LinearLayout>
 

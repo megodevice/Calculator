@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.hardware.biometrics.BiometricManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -41,9 +42,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onDigitClick(View view) {
         if (view instanceof MaterialButton) {
-            if (((MaterialButton) view).getText().toString().equals("+/-") && !resultTextView.getText().toString().equals("0")) {
+            if (((MaterialButton) view).getText().toString().equals("+/-")) {
                 if (!resultTextView.getText().toString().contains("-")) {
-                    resultTextView.setText("-" + resultTextView.getText().toString());
+                    if (!resultTextView.getText().toString().equals("0")) {
+                        resultTextView.setText("-" + resultTextView.getText().toString());
+                    }
                 } else {
                     resultTextView.setText(resultTextView.getText().toString().replace("-", ""));
                 }
@@ -95,16 +98,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void onOperationClick(View view) {
         if (view instanceof MaterialButton) {
-
             if (!resultPressed && !operationPressed && digitPressed) {
                 onResultClick(null);
             }
-
             if (((MaterialButton) view).getText().toString().equals("+"))
                 operation = Operations.SUM;
             else if (((MaterialButton) view).getText().toString().equals("-"))
                 operation = Operations.SUBTRACT;
-            else if (((MaterialButton) view).getText().toString().equals("X"))
+            else if (((MaterialButton) view).getText().toString().equals("*"))
                 operation = Operations.MULTIPLY;
             else if (((MaterialButton) view).getText().toString().equals("/"))
                 operation = Operations.DIVIDE;
@@ -138,4 +139,5 @@ public class MainActivity extends AppCompatActivity {
         clipboard.setPrimaryClip(clip);
         Toast.makeText(MainActivity.this, "Результат скопирован", Toast.LENGTH_SHORT).show();
     }
+
 }
