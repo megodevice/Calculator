@@ -1,10 +1,14 @@
 package com.geeks.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
+import android.app.Activity;
+import android.app.Notification;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.biometrics.BiometricManager;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,6 +24,9 @@ import java.io.BufferedWriter;
 public class MainActivity extends AppCompatActivity {
 
     private androidx.appcompat.widget.AppCompatTextView resultTextView;
+    public static final String KEY1 = "key1";
+    public static final String KEY2 = "key2";
+    private AppCompatButton buttonGoToSecondActivity;
     private double operandOne;
     private double operandTwo;
     private double result;
@@ -35,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(getIntent().getBooleanExtra(KEY2, false)) finish();
         clipboard = (ClipboardManager) MainActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
         resultTextView = findViewById(R.id.result_text_view);
+        buttonGoToSecondActivity = findViewById(R.id.button_go_to_second_activity);
         onACClick(null);
     }
 
@@ -62,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             operationPressed = false;
             resultPressed = false;
             digitPressed = true;
+            buttonGoToSecondActivity.setVisibility(View.GONE);
         }
     }
 
@@ -81,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             operationPressed = false;
             digitPressed = false;
             resultPressed = true;
+            buttonGoToSecondActivity.setVisibility(View.VISIBLE);
         }
     }
 
@@ -94,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         operationPressed = false;
         resultPressed = false;
         digitPressed = false;
+        buttonGoToSecondActivity.setVisibility(View.GONE);
     }
 
     public void onOperationClick(View view) {
@@ -113,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
             operationPressed = true;
             digitPressed = false;
             resultPressed = false;
+            buttonGoToSecondActivity.setVisibility(View.GONE);
         }
     }
 
@@ -131,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
             if (stringResult.endsWith(".0")) stringResult = stringResult.replace(".0", "");
             resultTextView.setText(stringResult);
             operation = Operations.NON;
+            buttonGoToSecondActivity.setVisibility(View.VISIBLE);
         }
     }
 
@@ -140,4 +154,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "Результат скопирован", Toast.LENGTH_SHORT).show();
     }
 
+    public void onGoButtonClick(View view) {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        intent.putExtra(KEY1, resultTextView.getText().toString());
+        startActivity(intent);
+    }
 }

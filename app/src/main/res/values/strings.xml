@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Calculator</string>
+    <string name="go_to_second_activity">Go to Second activity</string>
+    <string name="category">Category</string>
+    <string name="explore_the_nightlife_of_your_n_city">Explore the nightlife of your\n city</string>
+    <string name="price">Price💰</string>
+    <string name="accessibility">Accessibility</string>
+    <string name="participants">Participants</string>
+    <string name="free">Free</string>
+    <string name="next">Next</string>
+    <string name="price_without_emoji">Price</string>
 </resources>
