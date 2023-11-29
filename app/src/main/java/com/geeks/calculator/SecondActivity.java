@@ -1,7 +1,6 @@
 package com.geeks.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatSpinner;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,21 +15,18 @@ import com.google.android.material.slider.RangeSlider;
 
 public class SecondActivity extends AppCompatActivity {
 
-    private TextView textViewResult;
-    private Spinner spinner;
-    private RangeSlider rangeSlider1;
-    private RangeSlider rangeSlider2;
     private boolean isLike;
     ImageButton imageButtonLike;
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        textViewResult = findViewById(R.id.text_view_result);
+        TextView textViewResult = findViewById(R.id.text_view_result);
         imageButtonLike = findViewById(R.id.button_like);
-        spinner = findViewById(R.id.spinner);
-        rangeSlider1 = findViewById(R.id.range_slider1);
-        rangeSlider2 = findViewById(R.id.range_slider2);
+        Spinner spinner = findViewById(R.id.spinner);
+        RangeSlider rangeSlider1 = findViewById(R.id.range_slider1);
+        RangeSlider rangeSlider2 = findViewById(R.id.range_slider2);
         String[] items = {"Type", "Age", "Name"};
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(SecondActivity.this, R.xml.spinner_text, items);
         adapter.setDropDownViewResource(R.xml.spinner_dropdown);

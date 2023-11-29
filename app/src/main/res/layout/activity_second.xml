@@ -40,7 +40,8 @@
                 android:background="@color/bg_pink_button_SA"
                 android:layout_width="50dp"
                 android:src="@drawable/ic_icon_unlike"
-                android:layout_height="36dp"/>
+                android:layout_height="36dp"
+                android:importantForAccessibility="no" />
 
             <TextView
                 android:id="@+id/text_view_result"
@@ -127,25 +128,29 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_icon1" />
+                    android:src="@drawable/ic_icon1"
+                    android:importantForAccessibility="no" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:src="@drawable/ic_icon2" />
+                    android:src="@drawable/ic_icon2"
+                    android:importantForAccessibility="no" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:src="@drawable/ic_icon3" />
+                    android:src="@drawable/ic_icon3"
+                    android:importantForAccessibility="no" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:src="@drawable/ic_icon4" />
+                    android:src="@drawable/ic_icon4"
+                    android:importantForAccessibility="no" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -219,7 +224,8 @@
             android:layout_marginEnd="10dp"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:src="@drawable/ic_drop" />
+            android:src="@drawable/ic_drop"
+            android:importantForAccessibility="no" />
 
     </RelativeLayout>
 
