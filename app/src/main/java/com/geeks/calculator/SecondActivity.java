@@ -17,7 +17,7 @@ import com.google.android.material.slider.RangeSlider;
 public class SecondActivity extends AppCompatActivity {
 
     private TextView textViewResult;
-    private AppCompatSpinner spinner;
+    private Spinner spinner;
     private RangeSlider rangeSlider1;
     private RangeSlider rangeSlider2;
     private boolean isLike;
@@ -31,8 +31,9 @@ public class SecondActivity extends AppCompatActivity {
         spinner = findViewById(R.id.spinner);
         rangeSlider1 = findViewById(R.id.range_slider1);
         rangeSlider2 = findViewById(R.id.range_slider2);
-        String[] items = new String[]{"Type", "Age", "Name"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        String[] items = {"Type", "Age", "Name"};
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(SecondActivity.this, R.xml.spinner_text, items);
+        adapter.setDropDownViewResource(R.xml.spinner_dropdown);
         spinner.setAdapter(adapter);
         textViewResult.setText(getIntent().getStringExtra(MainActivity.KEY1));
         rangeSlider1.setValues(30.0f,57.0f);
